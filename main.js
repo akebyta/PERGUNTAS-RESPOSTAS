@@ -49,20 +49,58 @@ const perguntas = [
         ]
     },
     {
-        enunciado: "3) VOCÊ PREFERE ESMALTES QUE OFERECEM UMA AMPLA GAMA DE CORES OU AQUELES COM UMA PALETA MAIS RESTRITA, MAIS SOFISTICADA?",
+        enunciado: "4) VOCÊ PREFERE ESMALTES QUE OFERECEM UMA AMPLA GAMA DE CORES OU AQUELES COM UMA PALETA MAIS RESTRITA, MAIS SOFISTICADA?",
         alternativas: [
             {
-            texto: "a) Preço acessível",
+            texto: "a) Ampla gama de cores",
             afirmacao: "."
             },
 
             {
-            texto: "b) Fórmula livre de produtos químicos",
+            texto: "b) Paleta restrita e sofisticada",
             afirmacao: "."
             },
         ]
     },
-]
+    {
+        enunciado: "5) AO ESCOLHER UMA MARCA DE ESMALTE, VOCÊ VALORIZA MAIS A PRESENÇA EM LOJAS FÍSICAS OU A FACILIDADE DE COMPRA ONLINE?",
+        alternativas: [
+            {
+            texto: "a) Presença em lojas físicas",
+            afirmacao: "."
+            },
+
+            {
+            texto: "b) Facilidade em compra online",
+            afirmacao: "."
+            },
+        ]
+}, 
+
+] 
+
+let atual = 0;
+let perguntaAtual;
+function mostraPergunta(){
+    caixaAlternativas.textContent="";
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntas[atual].enunciado;
+    mostraAlternativas();
+}
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", function(){
+            atual++;
+            mostraPergunta();
+        });        
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+mostraPergunta();
+
+
 
 
 
